@@ -13,8 +13,10 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    // animation: rotation 10s infinite linear;
-    // -webkit-animation: rotation 10s infinite linear;
+    &.playing {
+      animation: rotation 10s infinite linear;
+      -webkit-animation: rotation 10s infinite linear;
+    }
   }
   h2 {
     padding: 3rem 1rem 1rem 1rem;
