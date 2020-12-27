@@ -62,6 +62,26 @@ function chillHop() {
       active: false,
     },
     //ADD MORE HERE
+    {
+      name: "Sugarless",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/11/8a0c857ddad531279d0757f5362380a6837b1b69-1024x1024.jpg",
+      artist: "The Field Tapes, Aviino",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=11243",
+      id: uuidv4(),
+      color: ["#192F46", "#A5BCC1"],
+      active: false,
+    },
+    {
+      name: "Hereafter",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2020/11/f78c39b4bb6313ddd0354bef896c591bfb490ff8-1024x1024.jpg",
+      artist: "Makzo",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=11770",
+      id: uuidv4(),
+      color: ["#B66F6D", "#FCB36B"],
+      active: false,
+    },
   ];
 }
 
