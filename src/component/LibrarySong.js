@@ -50,7 +50,7 @@ const LibrarySong = ({
       style={{
         background:
           song.active &&
-          `linear-gradient(to right,rgba(255,0,0,0),${song.color[0]},${song.color[1]})`,
+          `linear-gradient(to right,transparent,${song.color[0]},${song.color[1]})`,
       }}
     >
       <img src={song.cover} alt={song.name} />

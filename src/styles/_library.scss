@@ -18,6 +18,8 @@
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   opacity: 0;
+  z-index: 100;
+  background-color: #fff;
   &.open {
     transform: translateX(0);
     -webkit-transform: translateX(0);
@@ -25,6 +27,7 @@
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     opacity: 1;
+    z-index: 100;
   }
   h2 {
     padding: 2rem;
@@ -91,4 +94,10 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border: transparent;
+}
+
+@media screen and (max-width: "768px") {
+  .library {
+    width: 100%;
+  }
 }
