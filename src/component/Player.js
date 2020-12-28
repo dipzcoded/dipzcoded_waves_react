@@ -46,7 +46,7 @@ const Player = ({
         <input
           type="range"
           min={0}
-          max={duration}
+          max={duration || 0}
           value={currentTime}
           onChange={dragHandler}
         />

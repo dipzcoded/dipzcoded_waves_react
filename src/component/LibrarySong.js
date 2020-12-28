@@ -6,11 +6,28 @@ const LibrarySong = ({
   isPlaying,
   setIsPlaying,
   audioPlayer,
-  setSongInfo,
-  songInfo,
+  setSongs,
+  songs,
 }) => {
   const onSongSelect = () => {
     setCurrentSong(song);
+    if (song.active) {
+      audioPlayer.current.currentTime = 0;
+    }
+    const newSong = songs.map((el) => {
+      if (el.id === song.id) {
+        return {
+          ...el,
+          active: true,
+        };
+      } else {
+        return {
+          ...el,
+          active: false,
+        };
+      }
+    });
+    setSongs(newSong);
     if (isPlaying) {
       setIsPlaying(false);
       const playPromise = audioPlayer.current.play();
@@ -27,9 +44,17 @@ const LibrarySong = ({
     }
   };
   return (
-    <div onClick={onSongSelect} className="library-song">
+    <div
+      onClick={onSongSelect}
+      className="library-song"
+      style={{
+        background:
+          song.active &&
+          `linear-gradient(to right,rgba(255,0,0,0),${song.color[0]},${song.color[1]})`,
+      }}
+    >
       <img src={song.cover} alt={song.name} />
-      <div className="song-description">
+      <div className={`song-description ${song.active && "selected"}`}>
         <h3>{song.name}</h3>
         <h4>{song.artist}</h4>
       </div>

@@ -1,0 +1,23 @@
+nav {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+  button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    border: 2px solid rgb(65, 65, 65);
+    padding: 0.5rem;
+    transition: all 0.3 ease;
+    -webkit-transition: all 0.3 ease;
+    -moz-transition: all 0.3 ease;
+    -ms-transition: all 0.3 ease;
+    -o-transition: all 0.3 ease;
+    &:hover {
+      background: rgb(65, 65, 65);
+      color: #ffffff;
+    }
+  }
+}

@@ -7,23 +7,23 @@ const Library = ({
   audioPlayer,
   isPlaying,
   setIsPlaying,
-  setSongInfo,
-  songInfo,
+  setSongs,
+  isOpen,
 }) => {
   const librarySongs = songs.map((song) => (
     <LibrarySong
       key={song.id}
       song={song}
+      songs={songs}
       setCurrentSong={setCurrentSong}
       audioPlayer={audioPlayer}
       isPlaying={isPlaying}
       setIsPlaying={setIsPlaying}
-      setSongInfo={setSongInfo}
-      songInfo={songInfo}
+      setSongs={setSongs}
     />
   ));
   return (
-    <div className="library">
+    <div className={`library ${isOpen && "open"}`}>
       <h2>Library</h2>
       <div className="library-songs">{librarySongs}</div>
     </div>

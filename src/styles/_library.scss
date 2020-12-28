@@ -7,7 +7,25 @@
   overflow-x: hidden;
   overflow-y: overlay;
   box-shadow: 2px 2px 50px rgb(204, 204, 204);
-
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  opacity: 0;
+  &.open {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    opacity: 1;
+  }
   h2 {
     padding: 2rem;
   }
@@ -25,6 +43,9 @@
     &:hover {
       background: rgb(222, 222, 225);
     }
+    &.selected {
+      background: rgb(222, 222, 225);
+    }
     img {
       width: 30%;
     }
@@ -35,6 +56,12 @@
   display: flex;
   flex-direction: column;
   padding-left: 1rem;
+  &.selected {
+    h3,
+    h4 {
+      color: white;
+    }
+  }
   h3 {
     font-size: 1rem;
   }
