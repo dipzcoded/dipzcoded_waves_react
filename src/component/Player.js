@@ -14,6 +14,9 @@ const Player = ({
   audioPlayer,
   songInfo,
   setSongInfo,
+  songs,
+  setCurrentSong,
+  setSongs,
 }) => {
   const onPlay = () => {
     audioPlayer.current.play();
@@ -37,6 +40,49 @@ const Player = ({
       currentTime: e.target.value,
     });
   };
+
+  const skipTrackHandler = (direction) => {
+    let currentIndex = songs.findIndex((el) => el.id === currentSong.id);
+    if (direction === "skip-back") {
+      if (currentIndex === 0) {
+        // todo some time
+        currentIndex = songs.length - 1;
+      } else {
+        currentIndex = currentIndex - 1;
+      }
+    } else if (direction === "skip-forward") {
+      if (currentIndex === songs.length - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex = currentIndex + 1;
+      }
+    }
+
+    const newSongs = songs.map((el, index) => {
+      if (index === currentIndex) {
+        return {
+          ...el,
+          active: true,
+        };
+      } else {
+        return {
+          ...el,
+          active: false,
+        };
+      }
+    });
+    setCurrentSong(songs[currentIndex]);
+    setSongs(newSongs);
+
+    if (isPlaying) {
+      setIsPlaying(false);
+      const playPromise = audioPlayer.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then((play) => audioPlayer.current.play());
+      }
+      setIsPlaying(true);
+    }
+  };
   const { currentTime, duration } = songInfo;
 
   return (
@@ -53,7 +99,12 @@ const Player = ({
         <p>{formatTime(duration)}</p>
       </div>
       <div className="play-control">
-        <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          onClick={() => skipTrackHandler("skip-back")}
+          className="skip-back"
+          size="2x"
+          icon={faAngleLeft}
+        />
         {isPlaying ? (
           <FontAwesomeIcon
             className="play"
@@ -71,6 +122,7 @@ const Player = ({
         )}
 
         <FontAwesomeIcon
+          onClick={() => skipTrackHandler("skip-forward")}
           className="skip-forward"
           size="2x"
           icon={faAngleRight}

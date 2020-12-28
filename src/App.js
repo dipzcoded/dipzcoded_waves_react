@@ -27,11 +27,14 @@ const App = () => {
       <Song currentSong={currentSong} isPlaying={isPlaying} />
       <Player
         currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         audioPlayer={audioPlayer}
         setSongInfo={setSongInfo}
         songInfo={songInfo}
+        songs={songs}
+        setSongs={setSongs}
       />
       <Library
         songs={songs}
