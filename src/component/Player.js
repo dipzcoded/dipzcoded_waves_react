@@ -56,9 +56,11 @@ const Player = ({
     const index = songs.findIndex((el) => el.id === currentSong.id);
     if (currentTime === duration && duration) {
       if (index === songs.length - 1) {
+        activeLibraryHandle(songs[0]);
         setCurrentSong(songs[0]);
         setIsPlaying(false);
       } else {
+        activeLibraryHandle(songs[index + 1]);
         setCurrentSong(songs[index + 1]);
       }
     } else {
